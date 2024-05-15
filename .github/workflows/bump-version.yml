@@ -14,7 +14,8 @@ on:
 jobs:
   bump-package-version:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@v11.0.4
-        
