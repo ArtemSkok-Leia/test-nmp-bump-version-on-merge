@@ -1,0 +1,13 @@
+name: Deploy Development Main (MOCK)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "echo test message"
+        run: 'echo "[DEPLOY DEVELOPMENT MAIN HAS BEEN TRIGGERNED]"'
