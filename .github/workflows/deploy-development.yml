@@ -3,7 +3,7 @@ name: Deploy Development Main (MOCK)
 on:
   push:
     branches:
-      - main
+      - "main"
 
 jobs:
   echo:
