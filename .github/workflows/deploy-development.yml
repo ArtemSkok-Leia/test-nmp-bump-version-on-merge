@@ -9,5 +9,18 @@ jobs:
   echo:
     runs-on: "ubuntu-latest"
     steps:
-      - name: "echo test message"
-        run: 'echo "[DEPLOY DEVELOPMENT MAIN HAS BEEN TRIGGERNED]"'
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Read version from package.json
+        id: read-version
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          echo "The version in package.json is $VERSION"
+          echo "::set-output name=version::$VERSION"
+
+      - name: Echo the version
+        run: echo "Action was triggered on the ${{ steps.read-version.outputs.version }} app version"
